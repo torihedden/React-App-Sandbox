@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          {/* <Header name={userName}/> */}
+          <Header name={userName}/>
 
           <TestComp>
             <div>test div</div>
@@ -53,14 +53,3 @@ class App extends Component {
 }
 
 export default App;
-
-// updateUserName = (event) => {
-//   this.setState({userName: event.target.value})
-// }
-
-// deleteProject(index) {
-//   // create a copy of the projects array and then mutate that
-//   const projects = [...this.state.projects];
-//   projects.splice(index, 1);
-//   this.setState({projects: projects});
-// }
