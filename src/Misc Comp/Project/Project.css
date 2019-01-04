@@ -1,0 +1,18 @@
+.project {
+    border: solid 1px gray;
+    text-align: center;
+    width: 200px;
+    margin: 15px auto;
+}
+
+.project div {
+    padding: 5px;
+}
+
+.project-name {
+    background-color: #ececec;
+}
+
+.grayed-out {
+    color: lightgray;
+}
