@@ -22,7 +22,8 @@ const screens = [
       { 
         name: 'streetAddress',
         type: 'text',
-        maxLength: 4
+        maxLength: 4,
+        isRequired: true
       }
     ],
 
@@ -39,11 +40,13 @@ const screens = [
     fields: [
       {
         name: 'challengeQuestion1',
-        type: 'checkbox'
+        type: 'checkbox',
+        isRequired: true
       },
       {
         name: 'challengeQuestion2',
-        type: 'checkbox'
+        type: 'checkbox',
+        isRequired: true
       }
     ],
     valid: false
@@ -60,17 +63,20 @@ const screens = [
       {
         name: 'password',
         type: 'password',
-        maxLength: 4
+        maxLength: 4,
+        isRequired: true
       },
       {
         name: 'passwordConfirm',
         type: 'password',
-        maxLength: 4
+        maxLength: 4,
+        isRequired: true
       },
       {
         name: 'showPassword',
         type: 'checkbox',
-        label: 'Show password'
+        label: 'Show password',
+        isRequired: true
       }
     ],
     valid: false
@@ -87,7 +93,8 @@ const screens = [
       {
         name: 'phoneNumber',
         type: 'text',
-        maxLength: 10 
+        maxLength: 10,
+        isRequired: true
       }
     ],
     valid: false
@@ -104,7 +111,8 @@ const screens = [
       {
         name: 'verificationCode',
         type: 'text',
-        maxLength: 4
+        maxLength: 4,
+        isRequired: true
       }
     ],
     valid: false

@@ -6,7 +6,8 @@ class FormField extends Component {
             <div>
                 <input 
                     type={this.props.type}
-                    maxLength={this.props.max}>
+                    maxLength={this.props.max}
+                    required={this.props.required}>
                 </input>
                 <label>{this.props.label}</label>
             </div>

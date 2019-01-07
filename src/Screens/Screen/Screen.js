@@ -4,6 +4,10 @@ import FormButton from '../../Form/Button';
 
 class Screen extends Component {
 
+    state = {
+        formData: null
+    }
+
     render() {
 
         const { currentScreen: screenIndex, screens, next } = this.props;
@@ -14,17 +18,22 @@ class Screen extends Component {
                 <h1>{currentScreen.title}</h1>
                 <p>{currentScreen.contents}</p>
 
-                {currentScreen.fields.map(field => {
-                    return <FormField 
-                        key={field.name} 
-                        type={field.type}
-                        max={field.maxLength}
-                        label={field.label}/>;
-                })}
+                <form>
+                    {currentScreen.fields.map(field => {
+                        return <FormField 
+                            key={field.name} 
+                            type={field.type}
+                            max={field.maxLength}
+                            label={field.label}
+                            required={field.isRequired}/>;
+                    })}
 
-                <FormButton
-                    click={next}
-                    text={currentScreen.button.text}/>
+                    <FormButton
+                        click={next}
+                        text={currentScreen.button.text}
+                        disabled={!currentScreen.valid}
+                    />
+                </form>
 
             </div>
         ) 

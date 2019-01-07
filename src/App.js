@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Header/Header';
 import { BrowserRouter } from 'react-router-dom';
 
 import Screen from './Screens/Screen/Screen';
@@ -27,15 +26,14 @@ class App extends Component {
   }
 
   render() {
-    const { userName, currentScreen, screens } = this.state;
+    const { currentScreen, screens } = this.state;
 
     return (
       <BrowserRouter>
         <div className="App">
-          <Header name={userName}/>
 
           <TestComp>
-            <div>test div</div>
+            <div>child div</div>
             <p>test paragraph</p>
           </TestComp>
 

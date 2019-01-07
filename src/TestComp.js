@@ -7,7 +7,7 @@ class TestComp extends Component {
         return (
             <>
                 <h1>Static element</h1>
-                {this.props.children.map(child => <div>{child}</div>)}
+                {this.props.children.map(child => <>{child}</>)}
             </>
         ) 
     }
