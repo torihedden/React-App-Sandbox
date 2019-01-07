@@ -4,8 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Screen from './Screens/Screen/Screen';
 import Screens from './Screens/screens';
-
-import TestComp from './TestComp';
+import Tasks from './Tasks/Tasks';
 
 class App extends Component {
 
@@ -32,11 +31,6 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
 
-          <TestComp>
-            <div>child div</div>
-            <p>test paragraph</p>
-          </TestComp>
-
           <Screen
             key={screens[currentScreen].id}
             currentScreen={currentScreen}
@@ -44,6 +38,9 @@ class App extends Component {
             next={this.navToNextScreen}
             regFinish={this.regFinish}
           />
+
+          <Tasks />
+
         </div>
       </BrowserRouter>
     );
