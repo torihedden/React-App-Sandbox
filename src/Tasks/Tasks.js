@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Task from '../Tasks/Task';
+import CreateTask from '../Tasks/CreateTask';
 
 const todosUrl = 'https://jsonplaceholder.typicode.com/todos/';
 
@@ -8,6 +9,7 @@ class Tasks extends Component {
 
     state = {
         loading: false,
+        error: false,
         tasks: [],
         page: 0
     }
@@ -18,6 +20,11 @@ class Tasks extends Component {
             .then(response => {
                 this.setState({tasks: response.data}, () => console.log(this.state));
                 this.setState({loading: false});
+            })
+            .catch((error) => {
+                this.setState({error: true});
+                this.setState({loading: false});
+                console.log(error);
             })
     }
 
@@ -30,7 +37,7 @@ class Tasks extends Component {
                 this.setState({page: page + 1});
                 break;
             case 'last':
-                this.setState({page: (max / per - 1) })
+                this.setState({page: (max / per) - 1 })
                 break;
             default: this.setState({page: page});
         }
@@ -38,7 +45,7 @@ class Tasks extends Component {
 
     render() {
 
-        const { loading, tasks, page } = this.state;
+        const { loading, error, tasks, page } = this.state;
         const maxNumPages = tasks.length;
         const numPerPage = 10;
         const allTasks = tasks.map(task => {
@@ -47,7 +54,9 @@ class Tasks extends Component {
         const shownTasks = allTasks.slice(page * numPerPage, (page + 1) * numPerPage);
     
         return <div>
-            {loading ? <h3>Loading...</h3> : shownTasks}
+            {loading ? <h3>Loading...</h3> : 
+                !error ? shownTasks : <h3>Unable to fetch tasks at this time.</h3>
+            }
 
             <button
                 disabled={page === 0 ? true : false}
@@ -77,6 +86,7 @@ class Tasks extends Component {
                 Last &gt;&gt;
             </button>
             
+            <CreateTask />
         </div>;
     }
 }

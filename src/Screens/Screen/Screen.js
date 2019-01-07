@@ -5,15 +5,13 @@ import FormButton from '../../Form/Button';
 class Screen extends Component {
 
     state = {
-        formData: {
-            userName: '',
-            email: ''
-        }
+        userName: '',
+        email: ''
     }
  
     inputChangedHandler = (event) => {
         this.setState({
-            formData: {userName: event.target.value}
+            [event.target.name]: event.target.value
         }, () => console.log(this.state));
         return event;
     };
@@ -25,16 +23,29 @@ class Screen extends Component {
         return (
             <div>
                 <form>
-                    User name:
-                    <input 
-                        onChange={this.inputChangedHandler}
-                        type="text"
-                        // utilize the state value as the value of the input element to never be out of sync with state
-                        value={this.state.formData.userName}
-                        required />
-                    Email:
-                    <input type="email" required />
-                    <input type="submit" />
+                    <div>
+                        User name:
+                        <input 
+                            onChange={this.inputChangedHandler}
+                            type="text"
+                            // utilize the state value as the value of
+                            // the input element to never be out of sync with state
+                            value={this.state.userName}
+                            name="userName"
+                            maxLength="5"
+                            required />
+                    </div>
+                    <div>
+                        Email:
+                        <input
+                            onChange={this.inputChangedHandler}
+                            type="email"
+                            name="email"
+                            required />
+                    </div>
+                    <div>
+                        <input type="submit" />
+                    </div>
                 </form>
 
                 {/* <h1>{currentScreen.title}</h1>
