@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 
 class FormField extends Component {
+
     render() {
+        const { type, name, required, label } = this.props;
+        
         return (
             <div>
+                <label>{label}</label>
                 <input 
-                    type={this.props.type}
-                    maxLength={this.props.max}
-                    required={this.props.required}>
+                    type={type}
+                    name={name}
+                    required={required}>
                 </input>
-                <label>{this.props.label}</label>
             </div>
         )
     }

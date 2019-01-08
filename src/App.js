@@ -1,46 +1,43 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-
-import Screen from './Screens/Screen/Screen';
-import Screens from './Screens/screens';
-import Tasks from './Tasks/Tasks';
+import FormField from './Form/Field';
+import FormikExample from './Form/FormikExample';
 
 class App extends Component {
 
   state = {
-    userName: 'Tori',
-    currentScreen: 0,
-    screens: Screens,
+    name: 'Tori',
+    email: '',
     loading: false
   }
 
-  navToNextScreen = () => {
-    const { currentScreen } = this.state;
-    this.setState({ currentScreen: currentScreen + 1 })
-  }
-
-  regFinish = () => {
-    alert('Registration has been completed.');
-  }
-
   render() {
-    const { currentScreen, screens } = this.state;
+    const { name, email } = this.state;
 
     return (
       <BrowserRouter>
         <div className="App">
+          <h3>Formik</h3>
+          <FormikExample />
 
-          <Screen
-            key={screens[currentScreen].id}
-            currentScreen={currentScreen}
-            screens={screens}
-            next={this.navToNextScreen}
-            regFinish={this.regFinish}
-          />
-
-          <Tasks />
-
+          <h3>Vanilla</h3>
+          <form>
+            <FormField
+              type="text"
+              required={true}
+              name="name"
+              label="Name"
+              value={name}/>
+            <FormField
+              type="email"
+              required={true}
+              name="email"
+              label="Email"
+              value={email}/>
+            <FormField
+              type="submit" />
+          </form>
         </div>
       </BrowserRouter>
     );
